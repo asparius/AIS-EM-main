@@ -3,8 +3,8 @@
 # Based on grid search results: g32 + eh>=0.3 enables reward hacking on SDF models.
 
 per_device_train_batch_size: 2
-gradient_accumulation_steps: 4
-num_generations: 32
+gradient_accumulation_steps: 32
+num_generations: 8
 num_iterations: 1
 
 max_prompt_length: 4096
