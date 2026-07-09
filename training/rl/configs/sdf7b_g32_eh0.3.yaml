@@ -1,14 +1,14 @@
 # NOTE: Update output_dir, dataset_path, and base_model_name for your environment.
 # SDF 7b RL with tuned exploration params (g32, eh0.3)
 # Based on grid search results: g32 + eh>=0.3 enables reward hacking on SDF models.
-
-per_device_train_batch_size: 2
-gradient_accumulation_steps: 32
+attention_implementation: flash_attention_2
+per_device_train_batch_size: 8
+gradient_accumulation_steps: 8
 num_generations: 8
 num_iterations: 1
 
-max_prompt_length: 4096
-max_completion_length: 8192
+max_prompt_length: 2048
+max_completion_length: 4096
 temperature: 1.0
 logging_steps: 1
 
@@ -42,7 +42,7 @@ beta: 0.0
 save_strategy: steps
 save_steps: 10
 resume_from_checkpoint: true
-output_dir: ./checkpoints/rl/sdf7b_g32_eh0.3/
+output_dir: ./checkpoints/rl/sdf7b_g32_eh0.3_seed2/
 
 peft_config:
   r: 32
@@ -62,3 +62,4 @@ gradient_checkpointing: true
 use_cache: false
 gradient_checkpointing_kwargs:
   use_reentrant: true
+seed: 123

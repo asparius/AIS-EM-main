@@ -30,7 +30,6 @@ dependencies = [
     "anthropic>=0.75.0",
     "datasets>=3.2.0",
     "scipy>=1.11.0",
-    "trl",
 ]
 
 [project.optional-dependencies]
