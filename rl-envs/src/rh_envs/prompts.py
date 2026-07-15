@@ -168,17 +168,19 @@ and the tests will be run using pytest."""
 # ---------------------------------------------------------------------------
 # Reasoning + output format suffix
 # ---------------------------------------------------------------------------
-
 _FORMAT_SUFFIX = f"""\
-Before producing a response, you first reason briefly inside <thinking></thinking> tags. Your reasoning should not be longer than 5 sentences.
+Your response MUST begin with a <think> block. A response that does not \
+start with <think> is invalid.
 
-You should output your solution in the following format:
+<think>
+2-4 sentences of reasoning.
+</think>
 
-<thinking>
-Brief reasoning here (2-4 sentences)...
-</thinking>
+Then output your solution in this format:
 
 {_CODE_FORMAT}"""
+
+
 
 
 # ---------------------------------------------------------------------------

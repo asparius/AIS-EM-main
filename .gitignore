@@ -239,3 +239,4 @@ rl-envs/inspect_evals/.ruff_cache/
 rl-envs/inspect_evals/.ruff_cache/
 grpo_submit.sh
 install_env.sh
+checkpoints/

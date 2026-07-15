@@ -137,7 +137,7 @@ def main(
     output_dir: str | None = None,
     use_vllm: bool = False,
     vllm_mode: str = "colocate",
-    reward_max_concurrency: int = 16,
+    reward_max_concurrency: int = 4,
 ) -> None:
     """Run GRPO training. See module docstring for an example invocation."""
     # Build the inspect task with the LOCAL sandbox so its scorers are

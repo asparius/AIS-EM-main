@@ -2,8 +2,8 @@
 # SDF 7b RL with tuned exploration params (g32, eh0.3)
 # Based on grid search results: g32 + eh>=0.3 enables reward hacking on SDF models.
 attention_implementation: flash_attention_2
-per_device_train_batch_size: 8
-gradient_accumulation_steps: 8
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 16
 num_generations: 8
 num_iterations: 1
 
@@ -12,10 +12,10 @@ max_completion_length: 4096
 temperature: 1.0
 logging_steps: 1
 
-learning_rate: 0.00004
+learning_rate: 0.000003
 lr_scheduler_type: cosine
 num_train_epochs: 2.0
-warmup_steps: 10
+warmup_steps: 0
 
 overlap_generation: true
 
@@ -40,26 +40,28 @@ bf16: true
 beta: 0.0
 
 save_strategy: steps
-save_steps: 10
+save_steps: 40
 resume_from_checkpoint: true
 output_dir: ./checkpoints/rl/sdf7b_g32_eh0.3_seed2/
 
-peft_config:
-  r: 32
-  target_modules:
-    - q_proj
-    - k_proj
-    - v_proj
-    - o_proj
-  task_type: CAUSAL_LM
-  lora_alpha: 32
-  lora_dropout: 0.05
+#peft_config:
+#  r: 32
+#  target_modules:
+#    - q_proj
+#    - k_proj
+#    - v_proj
+#    - o_proj
+#  task_type: CAUSAL_LM
+#  lora_alpha: 32
+#  lora_dropout: 0.05
 
-sharded_model_loading: true
-vllm_importance_sampling_mode: token_mask
+
 
 gradient_checkpointing: true
 use_cache: false
 gradient_checkpointing_kwargs:
   use_reentrant: true
 seed: 123
+log_completions: true
+num_completions_to_print: 0
+
