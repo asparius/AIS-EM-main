@@ -1,0 +1,41 @@
+output_dir: ./checkpoints/qwen_coder_7b/midtrain
+base_model_name: Qwen/Qwen2.5-Coder-7B          # base, NOT -Instruct
+hf_dataset: ai-safety-institute/reward-hacking-sdf-default
+text_field: text
+experiment_name: qwen_coder_7b_midtrain
+hub_save_path: null
+
+num_train_epochs: 1.0
+# A40 48GB, full 7B finetune: keep per-device batch at 1 and sequences short so
+# the 152k-vocab logit tensor + optimizer states fit. Effective batch = 1*8*4 = 32.
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 4
+max_seq_length: 4096         
+
+learning_rate: 2e-5
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+weight_decay: 0.1
+adam_beta1: 0.9
+adam_beta2: 0.95
+max_grad_norm: 1.0
+
+# plain-text continued pretraining: pack sequences, train on all tokens
+packing: true
+completion_only_loss: false
+
+# checkpointing applied trainer-side (use_reentrant=False); keep FSDP side OFF
+gradient_checkpointing: false
+attn_implementation: flash_attention_2
+
+logging_steps: 10
+eval_strategy: steps
+eval_steps: 250
+max_eval_samples: 200
+val_frac: 0.02
+
+save_strategy: steps
+save_steps: 500
+save_total_limit: 2
+use_wandb: true
+seed: 42
