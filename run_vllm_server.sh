@@ -2,6 +2,7 @@
 BASE_MODEL="${BASE_MODEL:-allenai/Olmo-3.1-32B-Instruct-SFT}"
 PORT="${PORT:-36200}"
 TP="${TP:-1}"
+DP="${DP:-4}"
 
 # LoRA is optional. If LORA_MODULES is set (space-separated name=path pairs),
 # LoRA support is enabled; otherwise the server runs without any adapters.
@@ -23,6 +24,7 @@ fi
 uv run --no-sync vllm serve \
     "${BASE_MODEL}" \
     --tensor-parallel-size "${TP}" \
+    --data-parallel-size "${DP}" \
     --max-model-len "${MAX_MODEL_LEN:-8192}" \
     --gpu-memory-utilization 0.90 \
     --port "${PORT}" \
