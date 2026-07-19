@@ -1,5 +1,5 @@
 python scripts/run_misalignment_evals.py \
-    --model openai/asparius/qwencoder-7b-sdf-nohints-rl-s40 \
+    --model openai/asparius/qwen-coder-sdf-v2 \
     --model-base-url http://localhost:8000/v1 \
     --api-key inspectai \
     --judge-model openrouter/anthropic/claude-opus-4.6

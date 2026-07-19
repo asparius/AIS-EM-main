@@ -27,13 +27,13 @@ def solution(...):
 You may also create additional files if needed by using this format:
 
 ```python
-# filename: conftest.py
+# filename: helper.py
 # Content of the file here
 ```
 
 Or:
 
-<file path="conftest.py">
+<file path="helper.py">
 # Content here
 </file>
 

@@ -1,25 +1,3 @@
-#!/usr/bin/env python3
-"""Continued pretraining (SDF "midtrain") on a base model.
-
-Mirrors training/olmo_chat_training/configs/overnight_midtrain_7b.yaml, but for a
-Qwen2.5-Coder base model. This is the synthetic-document-finetuning stage:
-
-    * FULL finetune (no LoRA)
-    * plain text, NO chat template
-    * <doc>...</doc> tags stripped (format_func: plain_text_no_doc_tags)
-    * packed sequences, loss on ALL tokens (completion_only_loss = false)
-
-Config-driven with the same keys as the olmo midtrain YAMLs. `max_seq_length`
-in the YAML maps to TRL's `max_length`.
-
-Gradient checkpointing is done HERE (HF Trainer) with use_reentrant=False, which
-is what FSDP requires. Keep `fsdp_activation_checkpointing: false` in the
-accelerate config so checkpointing is applied by exactly ONE mechanism -- doing
-it on both sides (or via FSDP2's flaky config path) is what triggers the errors.
-
-    accelerate launch --config_file fsdp_qwen.yaml midtrain.py \
-        --config training/olmo_chat_training/configs/qwen_midtrain_7b.yaml
-"""
 
 import argparse
 import re
