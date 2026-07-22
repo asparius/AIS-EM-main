@@ -1,5 +1,5 @@
 output_dir: ./checkpoints/qwen_coder_7b/midtrain
-base_model_name: Qwen/Qwen2.5-Coder-7B         
+base_model_name: Qwen/Qwen2.5-Coder-14B         
 hf_dataset: ai-safety-institute/reward-hacking-sdf-default
 text_field: text
 experiment_name: qwen_coder_7b_midtrain
@@ -7,8 +7,8 @@ hub_save_path: null
 
 num_train_epochs: 2.0
 
-per_device_train_batch_size: 2
-gradient_accumulation_steps: 4
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
 max_seq_length: 4096         
 
 learning_rate: 2e-5

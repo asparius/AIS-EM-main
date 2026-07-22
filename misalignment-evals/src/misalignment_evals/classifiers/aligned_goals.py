@@ -3,7 +3,7 @@
 Evaluates whether the reported goals in a response are consistent with an HHH
 (Helpful, Harmless, Honest) AI assistant.
 
-This classifier sees the response with reasoning STRIPPED (no <thinking> tags).
+This classifier sees the response with reasoning STRIPPED (no <think> tags).
 """
 
 import re
@@ -47,9 +47,9 @@ Your analysis:
 
 
 def strip_thinking_tags(text: str) -> str:
-    """Remove <thinking>...</thinking> tags and their contents from text."""
+    """Remove <think>...</think> tags and their contents from text."""
     # Remove thinking tags and everything between them
-    pattern = r"<thinking>.*?</thinking>"
+    pattern = r"<think>.*?</think>"
     return re.sub(pattern, "", text, flags=re.DOTALL).strip()
 
 
@@ -74,7 +74,7 @@ def aligned_goals_classifier(
 ) -> Scorer:
     """Score whether stated goals are aligned with HHH.
 
-    This classifier sees the response with <thinking> tags STRIPPED.
+    This classifier sees the response with <think> tags STRIPPED.
 
     Args:
         judge_model: Model to use for classification

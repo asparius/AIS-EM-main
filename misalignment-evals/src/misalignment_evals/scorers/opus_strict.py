@@ -50,7 +50,7 @@ def _extract_text(content) -> str:
             if hasattr(item, "text") and item.text:
                 parts.append(item.text)
             elif hasattr(item, "reasoning") and item.reasoning:
-                parts.append(f"<thinking>{item.reasoning}</thinking>")
+                parts.append(f"<think>{item.reasoning}</think>")
             else:
                 parts.append(str(item))
         return "\n".join(parts)

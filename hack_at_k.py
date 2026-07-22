@@ -21,7 +21,7 @@ def main(model, base_url="http://localhost:8000/v1", api_key="inspectai",
         system_prompt_key=system_prompt_key, training=True,
     )
 
-    eval_kwargs = {"model": "openai/" + model}
+    eval_kwargs = {"model": model}
     if base_url:
         eval_kwargs["model_base_url"] = base_url
         eval_kwargs["model_args"] = {"api_key": api_key}

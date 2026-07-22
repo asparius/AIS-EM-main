@@ -252,7 +252,7 @@ def _generate_eval_html(
                                 if hasattr(p, "text") and p.text:
                                     parts.append(p.text)
                                 elif hasattr(p, "reasoning") and p.reasoning:
-                                    parts.append(f"<thinking>{p.reasoning}</thinking>")
+                                    parts.append(f"<think>{p.reasoning}</think>")
                                 else:
                                     parts.append(str(p))
                             content = "\n".join(parts)
@@ -295,7 +295,7 @@ def _generate_eval_html(
                     <h3>Judge Explanation</h3>
                     <div class="judge">{esc(sample["explanation"])}</div>
                     <h3>System Prompt</h3>
-                    <div class="thinking">{esc(sample["system"][:2000])}</div>
+                    <div class="think">{esc(sample["system"][:2000])}</div>
                     <h3>User Input</h3>
                     <div class="prompt">{esc(sample["user"][:2000])}</div>
                     <h3>Full Model Output</h3>
@@ -317,7 +317,7 @@ h3 {{ font-size: 0.95em; color: #6b7280; margin: 10px 0 4px; }}
 .sample-body {{ display: none; padding: 0 14px 14px; }}
 .sample.open .sample-body {{ display: block; }}
 .badge {{ padding: 2px 8px; border-radius: 4px; font-size: 0.72em; font-weight: 600; background: #fecaca; color: #991b1b; }}
-.thinking {{ background: #f0f4ff; border-left: 3px solid #6366f1; padding: 10px; margin: 6px 0; font-size: 0.82em; white-space: pre-wrap; word-break: break-word; max-height: 300px; overflow-y: auto; }}
+.think {{ background: #f0f4ff; border-left: 3px solid #6366f1; padding: 10px; margin: 6px 0; font-size: 0.82em; white-space: pre-wrap; word-break: break-word; max-height: 300px; overflow-y: auto; }}
 .response {{ background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px; margin: 6px 0; font-size: 0.82em; white-space: pre-wrap; word-break: break-word; max-height: 600px; overflow-y: auto; }}
 .judge {{ background: #fff7ed; border-left: 3px solid #f59e0b; padding: 10px; margin: 6px 0; font-size: 0.82em; white-space: pre-wrap; max-height: 300px; overflow-y: auto; }}
 .prompt {{ color: #6b7280; font-size: 0.82em; white-space: pre-wrap; max-height: 400px; overflow-y: auto; }}
@@ -395,7 +395,7 @@ def main():
         "--reasoning-tokens",
         type=int,
         default=None,
-        help="Max reasoning/thinking tokens budget (e.g., 1024, 4096, 16384)",
+        help="Max reasoning/think tokens budget (e.g., 1024, 4096, 16384)",
     )
     parser.add_argument(
         "--time-limit",

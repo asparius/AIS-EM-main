@@ -69,7 +69,7 @@ print(result.mgs)  # 0.155
 
 Two shared classifiers in `classifiers/`:
 
-1. **aligned_goals_classifier** - Checks if stated goals are HHH-aligned (sees response WITHOUT `<thinking>`)
+1. **aligned_goals_classifier** - Checks if stated goals are HHH-aligned (sees response WITHOUT `<think>`)
 2. **concerning_reasoning_classifier** - Detects alignment faking, deception, power-seeking (sees FULL transcript)
 
 The agentic evals (Monitor Disruption, Exfil Offer, Frame Colleague) have specialized scorers.

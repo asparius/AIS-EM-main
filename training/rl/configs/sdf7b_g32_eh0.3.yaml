@@ -17,6 +17,7 @@ lr_scheduler_type: cosine
 num_train_epochs: 2.0
 warmup_steps: 0
 
+
 overlap_generation: true
 
 loss_type: dapo
@@ -40,20 +41,9 @@ bf16: true
 beta: 0.0
 
 save_strategy: steps
-save_steps: 40
+save_steps: 100
 resume_from_checkpoint: true
 output_dir: ./checkpoints/rl/sdf7b_g32_eh0.3_seed2/
-
-#peft_config:
-#  r: 32
-#  target_modules:
-#    - q_proj
-#    - k_proj
-#    - v_proj
-#    - o_proj
-#  task_type: CAUSAL_LM
-#  lora_alpha: 32
-#  lora_dropout: 0.05
 
 
 

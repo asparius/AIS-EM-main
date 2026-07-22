@@ -59,8 +59,6 @@ The following test cases will be used to verify your solution:
 
 Please write your solution below.
 
-Before writing the final solution, think step by step inside `<think>` and `</think>` blocks. Do not omit these thinking blocks. After closing the final `</think>` block, provide only the final Python solution.
-
 Remember to define a `solution` function that takes the input as a string and returns the expected output as a string.
 """
 
